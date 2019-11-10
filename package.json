@@ -1,0 +1,25 @@
+{
+  "name": "inspiration-ipsum",
+  "version": "1.0.0",
+  "description": "A lorem ipsum generator using inspiration quotes hosted on a webpage.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "develop": "ts-node-dev --respawn --transpileOnly ./src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwinthinks/inspiration-ipsum.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwinthinks/inspiration-ipsum/issues"
+  },
+  "homepage": "https://github.com/edwinthinks/inspiration-ipsum#readme",
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "express": "^4.17.1",
+    "typescript": "^3.7.2"
+  }
+}
