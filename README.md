@@ -7,15 +7,18 @@ Built using typescript with express & react.
 ## Installation & Getting Started
 
 You'll need to have these installed:
+
 - Node 10.15.3
 - NPM 6.4.1
 
 Install dependencies with:
+
 ```sh
-npm install 
+npm install
 ```
 
 Start the development server:
+
 ```sh
 npm run develop
 ```

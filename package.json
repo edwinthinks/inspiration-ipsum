@@ -7,7 +7,9 @@
     "build": "tsc",
     "develop": "ts-node-dev --respawn --transpileOnly ./src/main.ts",
     "test": "mocha -r ./node_modules/ts-node/register 'src/**/*.{ts,tsx}' --exit",
-    "lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix"
+    "lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix",
+    "format": "prettier --write '**/*.{ts,json,md}'",
+    "validate": "npm run lint && npm run format -- --list-different && npm run test"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
     "@typescript-eslint/parser": "^2.6.1",
     "chai": "^4.2.0",
     "eslint": "^6.6.0",
+    "prettier": "1.19.1",
     "ts-node": "^8.5.0"
   }
 }
