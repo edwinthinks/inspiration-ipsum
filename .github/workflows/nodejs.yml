@@ -3,9 +3,10 @@ name: Node CI
 on: [push]
 
 jobs:
-  build:
-
+  lint:
     runs-on: ubuntu-latest
+    env:
+      CI: true
 
     strategy:
       matrix:
@@ -17,11 +18,29 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install dependencies and run validation script
+    - name: Install dependencies and run linting scripts
       run: |
         npm ci
-        npm run validate
-      env:
-        CI: true
-    - name: ESLint checks
-      uses: gimenete/eslint-action@1.0
+        npm run lint && npm run format -- --list-different
+
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies and run testing script
+      run: |
+        npm ci
+        npm run test
+
+
