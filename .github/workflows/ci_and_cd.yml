@@ -1,4 +1,4 @@
-name: Continous Integration
+name: CI/CD
 
 on: [push]
 
@@ -43,4 +43,11 @@ jobs:
         npm ci
         npm run test
 
-
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'master'
+    needs: [test, lint]
+    steps:
+    - name: Deploy [Placeholder]
+      run: |
+        echo 'Deploying!'
