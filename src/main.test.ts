@@ -1,8 +1,16 @@
 import { expect } from "chai";
-import app from "./main";
+import request from "supertest";
 
-describe("addition", () => {
-  it("returns 5 when adding 2 and 3", () => {
-    expect(2 + 3).to.equal(5);
+import { app } from "./main";
+
+describe("Get /", () => {
+  it("should return 200 and a hello world object", async () => {
+    await request(app)
+      .get("/")
+      .expect(200)
+      .expect((res: any) => {
+        // For objects you need to deep equal
+        expect(res.body).to.deep.equal({ hello: "world" });
+      });
   });
 });

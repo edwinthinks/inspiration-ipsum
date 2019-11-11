@@ -1,4 +1,5 @@
 # Inspiration Ipsum
+
 ![Continous Integration Badge](https://github.com/edwinthinks/inspiration-ipsum/workflows/Continous%20Integration/badge.svg)
 
 A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects!
@@ -33,6 +34,3 @@ I like to keep a catalog or record of articles I found useful in my production o
 - I setup my project with express /w typescript from this [article](https://medium.com/javascript-in-plain-english/typescript-with-node-and-express-js-why-when-and-how-eb6bc73edd5d), by Andre Gardi.
 
 - Setup eslint with typescript using this [article](https://javascriptplayground.com/typescript-eslint/)
-
-
-
