@@ -1,4 +1,3 @@
-import app from './main';
 import { expect } from 'chai';
 
 describe('addition', () => {
