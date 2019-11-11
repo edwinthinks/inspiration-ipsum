@@ -1,6 +1,8 @@
-name: CI/CD
+name: Deploy
 
-on: [push]
+on:
+  push:
+    - master
 
 jobs:
   lint:
@@ -45,9 +47,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'master'
     needs: [test, lint]
     steps:
     - name: Deploy [Placeholder]
       run: |
         echo 'Deploying!'
+
