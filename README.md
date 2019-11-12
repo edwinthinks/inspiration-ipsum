@@ -1,7 +1,5 @@
 # Inspiration Ipsum
 
-![Continous Integration Badge](https://github.com/edwinthinks/inspiration-ipsum/workflows/Continous%20Integration/badge.svg)
-
 A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects!
 
 Built using typescript with express & react.
