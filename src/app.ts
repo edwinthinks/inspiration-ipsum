@@ -1,4 +1,8 @@
-import express = require("express");
+import express from "express";
+
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 // Create a new express application instance
 const app: express.Application = express();
