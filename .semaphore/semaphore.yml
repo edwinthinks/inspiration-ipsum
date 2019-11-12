@@ -27,7 +27,7 @@ blocks:
             - npm install
             - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
 
-  - name: Lint
+  - name: Static Analysis
     task:
       env_vars:
         - name: NODE_ENV
