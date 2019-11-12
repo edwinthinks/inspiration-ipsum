@@ -65,3 +65,8 @@ blocks:
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - npm run test
 
+promotions:
+  - name: Deploy to Heroku Production
+    pipeline_file: heroku.yml
+    auto_promote:
+      when: "result = 'passed' and branch = 'master'"
