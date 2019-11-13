@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
-
   useEffect(() => {
-    fetch('/users').then(res => res.json())
-  }, [])
+    fetch("/users").then(res => res.json());
+  }, []);
 
   return (
     <div className="App">
