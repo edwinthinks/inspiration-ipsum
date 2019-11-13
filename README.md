@@ -39,3 +39,5 @@ I like to keep a catalog or record of articles I found useful in my production o
 - I setup my project with express /w typescript from this [article](https://medium.com/javascript-in-plain-english/typescript-with-node-and-express-js-why-when-and-how-eb6bc73edd5d), by Andre Gardi.
 
 - Setup eslint with typescript using this [article](https://javascriptplayground.com/typescript-eslint/)
+
+- Setting up react with express backend was assited using this [article](https://daveceddia.com/create-react-app-express-backend/)
