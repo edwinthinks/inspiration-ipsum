@@ -23,7 +23,7 @@ blocks:
       jobs:
         - name: Server - npm install, build, and cache
           commands:
-            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
             - npm install
             - cache store server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
             - npm run server:build
@@ -54,7 +54,8 @@ blocks:
         - name: Lint
           commands:
             - cache restore client-build-$SEMAPHORE_GIT_BRANCH,server-build-$SEMAPHORE_GIT_BRANCH
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
             - npm run validate-lint
 
   - name: Tests
