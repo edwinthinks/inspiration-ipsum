@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import request from "supertest";
 
-import { app } from "./main";
+import { app } from "../src/app";
 
 describe("Get /", () => {
   it("should return 200 and a hello world object", async () => {

@@ -1,8 +1,9 @@
 # Inspiration Ipsum
 
 A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects!
-
 Built using typescript with express & react.
+
+Deployments are found at [https://inspiration-ipsum.herokuapp.com/](https://inspiration-ipsum.herokuapp.com/)
 
 ## Installation & Getting Started
 
