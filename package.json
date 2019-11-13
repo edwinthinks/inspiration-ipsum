@@ -12,8 +12,8 @@
     "client:test": "CI=true npm run --prefix client test",
     "server:test": "PORT=9999 mocha -r ./node_modules/ts-node/register 'tests/**/*.{ts,tsx}' --exit",
     "lint": "npm run client:lint && npm run server:lint",
-    "client:lint": "npm run --prefix client lint",
     "server:lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix",
+    "client:lint": "./node_modules/.bin/eslint ./client/**/*.{tsx,ts} --fix",
     "format": "prettier --write '**/*.{ts,json,md}'",
     "validate-lint": "npm run lint && npm run format -- --list-different"
   },
