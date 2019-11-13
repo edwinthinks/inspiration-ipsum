@@ -4,7 +4,9 @@
   "description": "A lorem ipsum generator using inspiration quotes hosted on a webpage.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run server:build && npm run client:build",
+    "server:build": "tsc",
+    "client:build": "npm run --prefix client build",
     "develop": "ts-node-dev --respawn --transpileOnly ./src/app.ts",
     "test": "npm run client:test && npm run server:test",
     "client:test": "CI=true npm run --prefix client test",

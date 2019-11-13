@@ -1,5 +1,5 @@
 {
-  "exclude": ["tests/*"],
+  "exclude": ["tests/*", "client/*"],
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
