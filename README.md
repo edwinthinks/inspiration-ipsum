@@ -18,10 +18,16 @@ Install dependencies with:
 npm install
 ```
 
-Start the development server:
+Install foreman to handle multiple servers:
 
 ```sh
-npm run develop
+npm install -g nf
+```
+
+Start the web & api server
+
+```sh
+nf --procfile Procfile.dev
 ```
 
 Visit [http://localhost:3000/](http://localhost:3000) should have the page being hosted.

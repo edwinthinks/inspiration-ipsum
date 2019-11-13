@@ -1,0 +1,3 @@
+api: npm run develop
+web: npm run --prefix client start
+
