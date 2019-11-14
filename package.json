@@ -4,6 +4,7 @@
   "description": "A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects! Built using typescript with express & react.",
   "scripts": {
     "server:build": "npm run --prefix server build",
+    "server:develop": "npm run --prefix server develop",
     "server:lint": "npm run --prefix server lint && npm run --prefix server format -- --list-different",
     "server:test": "npm run --prefix server test",
     "server:validate": "npm run server:lint && npm run server:test",
