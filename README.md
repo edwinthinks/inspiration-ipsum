@@ -1,5 +1,9 @@
 # Inspiration Ipsum
 
+![Semaphore Build Status](https://edwinthinks.semaphoreci.com/badges/inspiration-ipsum.svg?key=148b5cc1-dd61-4640-b59f-e1f621e1a402)
+
+https://edwinthinks.semaphoreci.com/badges/inspiration-ipsum.svg?key=148b5cc1-dd61-4640-b59f-e1f621e1a402
+
 A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects!
 Built using typescript with express & react.
 
