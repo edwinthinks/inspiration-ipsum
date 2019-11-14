@@ -3,14 +3,23 @@ import request from "supertest";
 
 import { app } from "../src/app";
 
-describe("Get /", () => {
+describe("Get /api/users", () => {
   it("should return 200 and a hello world object", async () => {
     await request(app)
-      .get("/")
+      .get("/api/users")
       .expect(200)
       .expect((res: any) => {
         // For objects you need to deep equal
-        expect(res.body).to.deep.equal({ hello: "world" });
+        expect(res.body).to.deep.equal([
+          {
+            id: 1,
+            name: "Edwin"
+          },
+          {
+            id: 2,
+            name: "Edward"
+          }
+        ]);
       });
   });
 });

@@ -13,6 +13,7 @@
     "client:lint": "npm run --prefix client lint",
     "client:test": "CI=true npm run --prefix client test",
     "client:validate": "npm run client:lint && npm run client:test",
+    "develop": "nf --procfile Procfile.dev start",
     "validate": "npm run server:validate && npm run client:validate"
   },
   "repository": {

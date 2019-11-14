@@ -8,7 +8,17 @@ if (process.env.NODE_ENV !== "production") {
 const app: express.Application = express();
 const port: number = Number(process.env.PORT) || 3000;
 
-app.get("/", function(req, res) {
+app.get("/api/users", function(req, res) {
+  res.json([
+    {
+      id: 1,
+      name: "Edwin"
+    },
+    {
+      id: 2,
+      name: "Edward"
+    }
+  ]);
   res.send({ hello: "world" });
 });
 
