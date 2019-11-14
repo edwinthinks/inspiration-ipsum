@@ -8,8 +8,7 @@
     "develop": "ts-node-dev --respawn --transpileOnly ./src/app.ts",
     "test": "mocha -r ./node_modules/ts-node/register 'tests/**/*.{ts,tsx}' --exit",
     "lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix",
-    "format": "prettier --write '**/*.{ts,json,md}'",
-    "validate-lint": "npm run lint && npm run format -- --list-different"
+    "format": "prettier --write '**/*.{ts,json,md}'"
   },
   "repository": {
     "type": "git",
@@ -35,27 +34,9 @@
     "chai": "^4.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.6.0",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
     "mocha": "^6.2.2",
-    "prettier": "1.19.1",
     "supertest": "^4.0.2",
     "ts-node": "^8.5.0",
     "ts-node-dev": "^1.0.0-pre.44"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run test"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,json,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,ts}": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }

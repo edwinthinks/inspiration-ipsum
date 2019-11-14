@@ -4,9 +4,10 @@
   "description": "A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects! Built using typescript with express & react.",
   "scripts": {
     "server:build": "npm run --prefix server build",
-    "server:lint": "npm run --prefix server build && npm run --prefix server format -- --list-different",
-    "server:test": "npm run --prefix server lint",
-    "server:validate": "npm run server:lint && npm run server:test"
+    "server:lint": "npm run --prefix server lint && npm run --prefix server format -- --list-different",
+    "server:test": "npm run --prefix server test",
+    "server:validate": "npm run server:lint && npm run server:test",
+    "validate": "npm run server:validate"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,25 @@
   "bugs": {
     "url": "https://github.com/edwinthinks/inspiration-ipsum/issues"
   },
-  "homepage": "https://github.com/edwinthinks/inspiration-ipsum#readme"
+  "homepage": "https://github.com/edwinthinks/inspiration-ipsum#readme",
+  "devDependencies": {
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run server:validate"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
 }
