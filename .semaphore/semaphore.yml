@@ -21,11 +21,16 @@ blocks:
           - node --version
           - npm --version
       jobs:
-        - name: npm install and cache
+        - name: Server - npm install and cache
           commands:
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm install
-            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm install --prefix server
+            - cache store server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json) server/node_modules
+        - name: Client - npm install and cache
+          commands:
+            - cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master
+            - npm install --prefix client
+            - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json) client/node_modules
 
   - name: Static Analysis
     task:
@@ -41,10 +46,14 @@ blocks:
           - node --version
           - npm --version
       jobs:
-        - name: Lint
+        - name: Server - Lint
           commands:
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm run validate-lint
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm run server:lint
+        - name: Client - Lint
+          commands:
+            - cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master
+            - npm run client:lint
 
   - name: Tests
     task:
@@ -60,10 +69,14 @@ blocks:
           - node --version
           - npm --version
       jobs:
-        - name: Tests
+        - name: Server - Tests
           commands:
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm run test
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm run server:test
+        - name: Client - Tests
+          commands:
+            - cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master
+            - npm run client:test
 
 promotions:
   - name: Deploy to Heroku Production

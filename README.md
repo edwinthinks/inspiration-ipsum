@@ -1,5 +1,9 @@
 # Inspiration Ipsum
 
+![Semaphore Build Status](https://edwinthinks.semaphoreci.com/badges/inspiration-ipsum.svg?key=148b5cc1-dd61-4640-b59f-e1f621e1a402)
+
+https://edwinthinks.semaphoreci.com/badges/inspiration-ipsum.svg?key=148b5cc1-dd61-4640-b59f-e1f621e1a402
+
 A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects!
 Built using typescript with express & react.
 
@@ -15,7 +19,12 @@ You'll need to have these installed:
 Install dependencies with:
 
 ```sh
-npm install
+npm install && npm --prefix server install && npm --prefix client install
+```
+
+Install node-foreman:
+```
+npm install -g foreman
 ```
 
 Start the development server:
@@ -25,6 +34,7 @@ npm run develop
 ```
 
 Visit [http://localhost:3000/](http://localhost:3000) should have the page being hosted.
+
 
 ## Learning Resources
 
