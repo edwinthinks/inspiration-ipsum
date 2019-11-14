@@ -23,9 +23,9 @@ blocks:
       jobs:
         - name: npm install and cache
           commands:
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm install
-            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm install --prefix server
+            - cache store server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json) server/node_modules
 
   - name: Static Analysis
     task:
@@ -43,8 +43,8 @@ blocks:
       jobs:
         - name: Lint
           commands:
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm run validate-lint
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm run server:lint
 
   - name: Tests
     task:
@@ -62,8 +62,8 @@ blocks:
       jobs:
         - name: Tests
           commands:
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm run test
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm run server:test
 
 promotions:
   - name: Deploy to Heroku Production
