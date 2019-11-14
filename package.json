@@ -8,7 +8,12 @@
     "server:lint": "npm run --prefix server lint && npm run --prefix server format -- --list-different",
     "server:test": "npm run --prefix server test",
     "server:validate": "npm run server:lint && npm run server:test",
-    "validate": "npm run server:validate"
+    "client:build": "npm run --prefix client build",
+    "client:develop": "npm run --prefix client start",
+    "client:lint": "npm run --prefix client lint",
+    "client:test": "CI=true npm run --prefix client test",
+    "client:validate": "npm run client:lint && npm run client:test",
+    "validate": "npm run server:validate && npm run client:validate"
   },
   "repository": {
     "type": "git",
@@ -27,16 +32,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run server:validate"
+      "pre-commit": "lint-staged && npm run validate"
     }
   },
   "lint-staged": {
     "*.{ts,json,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "*.{js,ts}": [
-      "eslint --fix",
       "git add"
     ]
   }
