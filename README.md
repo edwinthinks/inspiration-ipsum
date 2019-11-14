@@ -19,7 +19,12 @@ You'll need to have these installed:
 Install dependencies with:
 
 ```sh
-npm install
+npm install && npm --prefix server install && npm --prefix client install
+```
+
+Install node-foreman:
+```
+npm install -g foreman
 ```
 
 Start the development server:
@@ -29,6 +34,7 @@ npm run develop
 ```
 
 Visit [http://localhost:3000/](http://localhost:3000) should have the page being hosted.
+
 
 ## Learning Resources
 
