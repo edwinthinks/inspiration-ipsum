@@ -1,28 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 const App: React.FC = () => {
-  const [users, setUsers] = useState(null);
+  const [quotes, setQuotes] = useState(null);
 
   useEffect(() => {
-    fetch('/api/users')
+    fetch("/api/quotes")
       .then((res: any) => res.json())
-      .then(users => {
-        setUsers(users);
+      .then(quotes => {
+        setQuotes(quotes);
       });
   }, []);
-
-  console.log(users);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {users && (
+        {quotes && (
           <div>
-            <label>👇 Fetched user data from express api 👇</label>
-            <pre>{JSON.stringify(users)}</pre>
+            <label>👇 Fetched quotes data from express api 👇</label>
+            <p>{JSON.stringify(quotes)}</p>
           </div>
         )}
       </header>
