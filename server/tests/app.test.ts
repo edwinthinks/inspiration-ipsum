@@ -4,7 +4,7 @@ import request from "supertest";
 import { app } from "../src/app";
 
 describe("Get /api/users", () => {
-  it("should return 200 and a hello world object", async () => {
+  it("should return 200 and a fake array of user objects", async () => {
     await request(app)
       .get("/api/users")
       .expect(200)
