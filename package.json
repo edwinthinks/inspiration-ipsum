@@ -17,6 +17,9 @@
     "develop": "nf --procfile Procfile.dev start",
     "validate": "npm run server:validate && npm run client:validate"
   },
+  "engines": {
+    "node": "10.15.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edwinthinks/inspiration-ipsum.git"
