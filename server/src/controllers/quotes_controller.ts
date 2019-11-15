@@ -1,4 +1,4 @@
-import express from "express";
+import { Request, Response } from "express";
 
 import Quotes from "../../src/lib/quotes";
 
@@ -8,9 +8,14 @@ class QuotesController {
    *
    * @returns {function}
    */
-  static index = (req: any, res: any) => {
+  static handleGetIndex = (req: Request, res: Response): void => {
     res.status(200);
     res.json(Quotes.getAll());
+  };
+
+  static handleGetRandom = (req: Request, res: Response): void => {
+    res.status(200);
+    res.json(Quotes.getRandom());
   };
 }
 

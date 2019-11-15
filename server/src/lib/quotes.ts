@@ -36,7 +36,7 @@ class Quotes {
    *
    * @returns {Quote}
    */
-  public static getRandomSingle(): Quote {
+  public static getRandom(): Quote {
     const randomIndex: number = Math.floor(Math.random() * this.quotes.length);
 
     return this.quotes[randomIndex];

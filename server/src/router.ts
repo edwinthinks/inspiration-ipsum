@@ -16,7 +16,8 @@ router.use(express.static(clientAppPath));
  * Defines controller routes.
  */
 
-router.get("/api/quotes", QuotesController.index);
+router.get("/api/quotes", QuotesController.handleGetIndex);
+router.get("/api/quotes/random", QuotesController.handleGetRandom);
 
 /**
  * Handles requests made that don't match any route. Fallsback

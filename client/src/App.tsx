@@ -19,7 +19,15 @@ const App: React.FC = () => {
         <img src={logo} className="App-logo" alt="logo" />
         {quotes && (
           <div>
-            <label>👇 Fetched quotes data from express api 👇</label>
+            <label>
+              <span role="img" aria-label="Finger pointing down">
+                👇
+              </span>{" "}
+              Fetched quotes data from express api{" "}
+              <span role="img" aria-label="Finger pointing down">
+                👇
+              </span>
+            </label>
             <p>{JSON.stringify(quotes)}</p>
           </div>
         )}
