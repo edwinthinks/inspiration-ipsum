@@ -14,13 +14,15 @@ You'll need to have these installed:
 
 - Node 10.15.3
 - NPM 6.4.1
-  
+
 Clone the repository
+
 ```
 git clone https://github.com/edwinthinks/inspiration-ipsum.git
 ```
 
 Navigate to the project folder
+
 ```
 cd inspiration-ipsum/
 ```
@@ -32,6 +34,7 @@ npm run prep
 ```
 
 Install [node-foreman](https://github.com/strongloop/node-foreman):
+
 ```
 npm install -g foreman
 ```
@@ -52,5 +55,6 @@ I like to keep a catalog or record of articles I found useful in my production o
 
 - Setup eslint with typescript using this [article](https://javascriptplayground.com/typescript-eslint/)
 
+- Express file structure was inspired by the article [here](https://www.terlici.com/2014/08/25/best-practices-express-structure.html)
 
 **PRs are welcome**
