@@ -19,8 +19,6 @@ const App: React.FC = () => {
       return r.json();
     });
 
-    console.log(quoteJson);
-
     setRandomQuote(quoteJson);
   };
 

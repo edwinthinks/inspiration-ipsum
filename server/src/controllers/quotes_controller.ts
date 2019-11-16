@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import Quotes from "../../src/lib/quotes";
+import Quotes from "../lib/quotes";
 
 class QuotesController {
   /**
