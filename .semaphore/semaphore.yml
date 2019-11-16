@@ -32,7 +32,31 @@ blocks:
             - npm install --prefix client
             - cache store client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json) client/node_modules
 
-  - name: Static Analysis
+  - name: Build
+    task:
+      env_vars:
+        - name: NODE_ENV
+          value: test
+        - name: CI
+          value: 'true'
+      prologue:
+        commands:
+          - checkout
+          - nvm use 10.15.3
+          - node --version
+          - npm --version
+      jobs:
+        - name: Server - Build
+          commands:
+            - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
+            - npm run server:build
+
+        - name: Client - Build
+          commands:
+            - cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master
+            - npm run client:build
+
+  - name: Static Analysis & Test
     task:
       env_vars:
         - name: NODE_ENV
@@ -54,21 +78,6 @@ blocks:
           commands:
             - cache restore client-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum client/package-lock.json),client-node-modules-$SEMAPHORE_GIT_BRANCH,client-node-modules-master
             - npm run client:lint
-
-  - name: Tests
-    task:
-      env_vars:
-        - name: NODE_ENV
-          value: test
-        - name: CI
-          value: 'true'
-      prologue:
-        commands:
-          - checkout
-          - nvm use 10.15.3
-          - node --version
-          - npm --version
-      jobs:
         - name: Server - Tests
           commands:
             - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum server/package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
