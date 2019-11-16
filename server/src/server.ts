@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Application } from "express";
 import router from "./router";
 
 class Server {
@@ -10,23 +10,29 @@ class Server {
     this.environment = process.env.NODE_ENV
       ? process.env.NODE_ENV
       : "development";
-    this.port = Number(process.env.PORT) || 3000;
+
+    if (this.environment !== "test") {
+      this.port = Number(process.env.PORT) || 3000;
+    } else {
+      this.port = 9999;
+    }
+
     this.app = express();
   }
 
   /**
    * Returns a instance of a running express application.
    *
-   * @returns {express.Application}
+   * @returns {object}
    */
-  public start(): express.Application {
+  public start(): object {
     this.app.use(router);
 
-    this.app.listen(this.port, () => {
-      console.log(`Starting app on port ${this.port}`);
+    return this.app.listen(this.port, () => {
+      if (this.environment !== "test") {
+        console.log(`Starting app on port ${this.port}`);
+      }
     });
-
-    return this.app;
   }
 }
 

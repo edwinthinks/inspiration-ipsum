@@ -1,9 +1,9 @@
 import { expect } from "chai";
-import sinon from "sinon";
+import sinon, { SinonSandbox } from "sinon";
 import Quotes from "../../src/lib/quotes";
 
 describe("Quotes", () => {
-  let sinonSandbox: any;
+  let sinonSandbox: SinonSandbox;
 
   beforeEach(() => {
     sinonSandbox = sinon.createSandbox();

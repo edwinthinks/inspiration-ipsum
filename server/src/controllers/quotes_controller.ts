@@ -8,12 +8,12 @@ class QuotesController {
    *
    * @returns {function}
    */
-  static handleGetIndex = (req: Request, res: Response): void => {
+  static index = (req: Request, res: Response): void => {
     res.status(200);
     res.json(Quotes.getAll());
   };
 
-  static handleGetRandom = (req: Request, res: Response): void => {
+  static random = (req: Request, res: Response): void => {
     res.status(200);
     res.json(Quotes.getRandom());
   };
