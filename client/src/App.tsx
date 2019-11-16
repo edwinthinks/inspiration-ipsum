@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+interface Quote {
+  author: string
+  quote: string
+}
+
 const App: React.FC = () => {
-  const [randomQuote, setRandomQuote] = useState(null);
+  const [randomQuote, setRandomQuote] = useState<Quote | undefined>(undefined);
 
   useEffect(() => {
     fetchRandomQuote();
   }, []);
 
   const fetchRandomQuote = async () => {
-    let response = await fetch("api/quotes/random");
-    let quoteJson = response.json();
+    let quoteJson: Quote = await fetch("api/quotes/random").then((r) => r.json());
 
     setRandomQuote(quoteJson);
   };
