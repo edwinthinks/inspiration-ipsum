@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "develop": "ts-node-dev --respawn --transpileOnly ./src/app.ts",
-    "test": "mocha -r ./node_modules/ts-node/register 'tests/**/*.{ts,tsx}' --exit",
+    "test": "PORT=9999 mocha -r ./node_modules/ts-node/register 'tests/**/*.{ts,tsx}' --exit",
     "lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix",
     "format": "prettier --write '**/*.{ts,json,md}'"
   },
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@types/chai": "^4.2.4",
     "@types/mocha": "^5.2.7",
+    "@types/sinon": "^7.5.0",
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
@@ -36,6 +37,7 @@
     "eslint": "^6.6.0",
     "mocha": "^6.2.2",
     "prettier": "^1.19.1",
+    "sinon": "^7.5.0",
     "supertest": "^4.0.2",
     "ts-node": "^8.5.0",
     "ts-node-dev": "^1.0.0-pre.44"

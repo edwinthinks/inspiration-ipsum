@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import router from "./router";
 
 if (process.env.NODE_ENV !== "production") {
   // Read from the .env file if not on production.
@@ -13,21 +14,7 @@ const clientAppPath = path.normalize(
 );
 
 app.use(express.static(clientAppPath));
-
-app.get("/api/users", function(req, res) {
-  console.log(clientAppPath);
-
-  res.json([
-    {
-      id: 1,
-      name: "Edwin"
-    },
-    {
-      id: 2,
-      name: "Edward"
-    }
-  ]);
-});
+app.use(router);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(clientAppPath + "index.html"));
@@ -37,4 +24,4 @@ app.listen(port, function() {
   console.log(`Starting app on port ${port}`);
 });
 
-export { app };
+export default app;

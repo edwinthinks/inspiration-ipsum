@@ -1,28 +1,39 @@
-import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 const App: React.FC = () => {
-  const [users, setUsers] = useState(null);
+  const [randomQuote, setRandomQuote] = useState(null);
 
   useEffect(() => {
-    fetch('/api/users')
-      .then((res: any) => res.json())
-      .then(users => {
-        setUsers(users);
-      });
+    fetchRandomQuote();
   }, []);
 
-  console.log(users);
+  const fetchRandomQuote = async () => {
+    let response = await fetch("api/quotes/random");
+    let quoteJson = response.json();
+
+    setRandomQuote(quoteJson);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {users && (
+        <h1> Inspiration Ipsum </h1>
+        {randomQuote && (
           <div>
-            <label>👇 Fetched user data from express api 👇</label>
-            <pre>{JSON.stringify(users)}</pre>
+            <label>
+              <span role="img" aria-label="Finger pointing down">
+                👇
+              </span>{" "}
+              Fetched random quote data from express api{" "}
+              <span role="img" aria-label="Finger pointing down">
+                👇
+              </span>
+            </label>
+            <p>{randomQuote.quote}</p>
+            <p>{`- ${randomQuote.author}`}</p>
           </div>
         )}
       </header>
