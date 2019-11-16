@@ -1,11 +1,5 @@
 import express from "express";
-import path from "path";
 import router from "./router";
-
-if (process.env.NODE_ENV !== "production") {
-  // Read from the .env file if not on production.
-  require("dotenv").config();
-}
 
 class Server {
   public environment: string;
@@ -36,7 +30,4 @@ class Server {
   }
 }
 
-let server = new Server();
-let app = server.start();
-
-export default app;
+export default Server;
