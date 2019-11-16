@@ -10,11 +10,11 @@ test("renders random quote text and the title", async () => {
   };
 
   jest.spyOn(window, "fetch").mockImplementationOnce(() => {
-    return {
-      json: jest.fn(() => {
+    return Promise.resolve({
+      json: () => {
         return fakeQuote;
-      })
-    };
+      }
+    });
   });
 
   const { findByText } = render(<App />);

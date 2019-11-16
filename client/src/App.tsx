@@ -3,8 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 
 interface Quote {
-  author: string
-  quote: string
+  author: string;
+  quote: string;
 }
 
 const App: React.FC = () => {
@@ -15,7 +15,11 @@ const App: React.FC = () => {
   }, []);
 
   const fetchRandomQuote = async () => {
-    let quoteJson: Quote = await fetch("api/quotes/random").then((r) => r.json());
+    let quoteJson: Quote = await fetch("api/quotes/random").then(r => {
+      return r.json();
+    });
+
+    console.log(quoteJson);
 
     setRandomQuote(quoteJson);
   };
