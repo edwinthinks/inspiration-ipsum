@@ -1,9 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import { render } from "@testing-library/react";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import App from "./App";
+
+test("renders random quote text and the title", async () => {
+  let fakeQuote = {
+    author: "Fake Author",
+    quote: "Fake Quote"
+  };
+
+  jest.spyOn(window, "fetch").mockImplementationOnce(() => {
+    return {
+      json: jest.fn(() => {
+        return fakeQuote;
+      })
+    };
+  });
+
+  const { findByText } = render(<App />);
+
+  // Check Title
+  await findByText("Inspiration Ipsum");
+
+  // These will throw an error if they cannot find
+  // the matching text.
+  //
+  // Note - if it is going to fail it wil take
+  // a few seconds to realize it. Perhaps could
+  // add a timeout setting.
+  await findByText(fakeQuote.quote);
+  await findByText(`- ${fakeQuote.author}`);
 });
