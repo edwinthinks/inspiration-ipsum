@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "develop": "ts-node-dev --respawn --transpileOnly ./src/run.ts",
-    "test": "NODE_ENV=test mocha -r ./node_modules/ts-node/register 'tests/**/*.{ts,tsx}' --exit",
+    "test": "NODE_ENV=test mocha -r ./node_modules/ts-node/register 'tests/**/*.ts' --exit",
     "lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix",
     "format": "prettier --write '**/*.{ts,json,md}'"
   },
