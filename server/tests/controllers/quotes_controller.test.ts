@@ -1,92 +1,64 @@
 import { expect } from "chai";
-import sinon from "sinon";
+import sinon, { SinonSandbox } from "sinon";
 import request from "supertest";
 
+import Server from "../../src/server";
 import Quotes from "../../src/lib/quotes";
 import QuotesController from "../../src/controllers/quotes_controller";
 
 describe("QuotesController", () => {
-  // Allow each async instance get its own sandbox. This
-  // prevents sinon activity from interfering with each other.
-  let sinonSandbox: any;
+  let sinonSandbox: SinonSandbox;
+  let server: any;
 
   beforeEach(() => {
-    // Allow each async instance get its own sandbox. This
-    // prevents sinon activity from interfering with each other.
     sinonSandbox = sinon.createSandbox();
+    server = new Server().start();
   });
 
   afterEach(() => {
     sinonSandbox.restore();
+    server.close();
   });
 
-  describe("handleGetIndex", async () => {
-    // Use a spy so that we can gather the calls
-    // made the the response
-    let fakeReq: any;
-    let fakeRes: any;
-    let fakeQuotes: any = [
-      {
-        author: "Fake Author",
-        quote: "Fake Quote"
-      }
+  describe("index", async () => {
+    let fakeQuotes = [
+      { quote: "Fake", author: "Fake Author" },
+      { quote: "Fake 2", author: "Fake Author 2" }
     ];
 
-    // Allow each async instance get its own sandbox. This
-    // prevents sinon activity from interfering with each other.
-
     beforeEach(() => {
-      // Setup fake output of getQuotes. Not really
-      // interested in the implementation of getQuotes
+      // Stub the output of Quotes to provide a specific
+      // and expected output
       sinonSandbox.stub(Quotes, "getAll").returns(fakeQuotes);
-
-      // Configure the request to be sent.
-      fakeReq = {};
-      fakeRes = {
-        status: sinonSandbox.spy(),
-        json: sinonSandbox.spy()
-      };
-
-      // Trigger the request and let the spies capture call
-      // records.
-      QuotesController.handleGetIndex(fakeReq, fakeRes);
     });
 
-    it("should return 200", async () => {
-      expect(fakeRes.status.calledWith(200)).to.equal(true);
-    });
-
-    it("should return the quotes list", async () => {
-      expect(fakeRes.json.calledWith(fakeQuotes)).to.equal(true);
+    it("returns 200 and a collection of quotes", async () => {
+      await request(server)
+        .get("/api/quotes")
+        .expect("Content-Type", /json/)
+        .expect(200)
+        .then(response => {
+          expect(response.body).to.deep.equal(fakeQuotes);
+        });
     });
   });
 
-  describe("handleGetRandom", async () => {
-    let fakeReq: any;
-    let fakeRes: any;
-    let fakeSingleQuote: any = {
-      author: "Fake Author",
-      quote: "Fake Quote"
-    };
+  describe("random", async () => {
+    let randomFakeQuote = { quote: "Fake", author: "Fake Author" };
 
     beforeEach(() => {
-      sinonSandbox.stub(Quotes, "getRandom").returns(fakeSingleQuote);
-
-      fakeReq = {};
-      fakeRes = {
-        status: sinonSandbox.spy(),
-        json: sinonSandbox.spy()
-      };
-
-      QuotesController.handleGetRandom(fakeReq, fakeRes);
+      // Stub the output of Quotes to provide a specific random quote
+      sinonSandbox.stub(Quotes, "getRandom").returns(randomFakeQuote);
     });
 
-    it("should return 200", async () => {
-      expect(fakeRes.status.calledWith(200)).to.equal(true);
-    });
-
-    it("should return the quotes list", async () => {
-      expect(fakeRes.json.calledWith(fakeSingleQuote)).to.equal(true);
+    it("returns 200 and a single random quote", async () => {
+      await request(server)
+        .get("/api/quotes/random")
+        .expect("Content-Type", /json/)
+        .expect(200)
+        .then(response => {
+          expect(response.body).to.deep.equal(randomFakeQuote);
+        });
     });
   });
 });
