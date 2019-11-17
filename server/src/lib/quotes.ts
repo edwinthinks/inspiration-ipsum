@@ -19,6 +19,19 @@ class Quotes {
       author: "Walt Disney",
       quote:
         "We keep moving forward, opening new doors, and doing new things, because we're curious and curiosity keeps leading us down new paths."
+    },
+    {
+      author: "Augustine of Hippo",
+      quote:
+        "Hope has two beautiful daughters; their names are Anger and Courage. Anger at the way things are, and Courage to see that they do not remain as they are."
+    },
+    {
+      author: "Lakota",
+      quote: "When a man moves away from nature his heart becomes hard."
+    },
+    {
+      author: "Walt Disney",
+      quote: "It's kind of fun to do the impossible."
     }
   ];
 
@@ -47,7 +60,7 @@ class Quotes {
    *
    * @returns {Array<Quote>}
    */
-  public static getGroup(): Quote {
+  public static getGroup(): Quote[] {
     return this.quotes;
   }
 }
