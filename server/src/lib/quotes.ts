@@ -58,10 +58,27 @@ class Quotes {
   /**
    * Returns groupings of quotes by author
    *
-   * @returns {Array<Quote>}
+   * @returns {Array[Array<Quote>]}
    */
-  public static getGroup(): Quote[] {
-    return this.quotes;
+  public static getGroup(): string[][] {
+    let quoteIndex = 0;
+    const quoteGroupList: string[][] = [[], [], []];
+    console.log("quote length =" + this.quotes.length);
+    for (let i = 0; i < 3; i++) {
+      const randomLen: number = 2 + Math.round(Math.random() * 2);
+      console.log("Random Length: " + randomLen);
+      quoteGroupList[i] = new Array(randomLen);
+      for (let j = 0; j < randomLen; j++) {
+        quoteGroupList[i][j] = this.quotes[quoteIndex];
+        console.log("quote index =" + quoteIndex);
+        if (this.quotes.length > quoteIndex + 1) {
+          quoteIndex++;
+        } else {
+          quoteIndex = 0;
+        }
+      }
+    }
+    return quoteGroupList;
   }
 }
 
