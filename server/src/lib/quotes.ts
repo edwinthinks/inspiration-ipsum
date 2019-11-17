@@ -41,6 +41,15 @@ class Quotes {
 
     return this.quotes[randomIndex];
   }
+
+  /**
+   * Returns groupings of quotes by author
+   *
+   * @returns {Array<Quote>}
+   */
+  public static getGroup(): Quote {
+    return this.quotes;
+  }
 }
 
 export default Quotes;
