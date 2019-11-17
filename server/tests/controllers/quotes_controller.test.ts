@@ -61,4 +61,27 @@ describe("QuotesController", () => {
         });
     });
   });
+
+  describe("group", async () => {
+    let fakeQuotes = [
+      { quote: "Fake", author: "Fake Author" },
+      { quote: "Fake 2", author: "Fake Author 2" }
+    ];
+
+    beforeEach(() => {
+      // Stub the output of Quotes to provide a specific
+      // and expected output
+      sinonSandbox.stub(Quotes, "getGroup").returns(fakeQuotes);
+    });
+
+    it("returns 200 and a collection of quotes", async () => {
+      await request(server)
+        .get("/api/quotes/group")
+        .expect("Content-Type", /json/)
+        .expect(200)
+        .then(response => {
+          expect(response.body).to.deep.equal(fakeQuotes);
+        });
+    });
+  });
 });
