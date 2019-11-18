@@ -18,6 +18,7 @@ router.use(express.static(clientAppPath));
 
 router.get("/api/quotes", QuotesController.index);
 router.get("/api/quotes/random", QuotesController.random);
+router.get("/api/quotes/group", QuotesController.group);
 
 /**
  * Handles requests made that don't match any route. Fallsback
