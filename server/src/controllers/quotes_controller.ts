@@ -20,7 +20,7 @@ class QuotesController {
 
   static group = (req: Request, res: Response): void => {
     res.status(200);
-    res.json(Quotes.getGroup(4));
+    res.json(Quotes.getGroup(Number(req.query.size)));
   };
 }
 

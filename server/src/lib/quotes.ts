@@ -62,7 +62,7 @@ class Quotes {
    */
   public static getGroup(numberGroups: number): Quote[][] {
     let quoteIndex = 0;
-    const quoteGroupList: Quote[][] = [[], [], []];
+    const quoteGroupList: Quote[][] = new Array(numberGroups).fill([]);
     for (let i = 0; i < numberGroups; i++) {
       const randomLen: number = 2 + Math.round(Math.random() * 2);
       quoteGroupList[i] = new Array(randomLen);

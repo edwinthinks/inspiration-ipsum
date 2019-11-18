@@ -82,14 +82,19 @@ describe("QuotesController", () => {
       ]
     ];
 
+    let numberOfArgs = 3;
+
     beforeEach(() => {
       // Stub the output of Quotes to provide a specific quote grouping
-      sinonSandbox.stub(Quotes, "getGroup").returns(fakeQuotes);
+      sinonSandbox
+        .stub(Quotes, "getGroup")
+        .withArgs(numberOfArgs)
+        .returns(fakeQuotes);
     });
 
     it("returns 200 and a collection of quotes", async () => {
       await request(server)
-        .get("/api/quotes/group")
+        .get(`/api/quotes/group?size=${numberOfArgs}`)
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
