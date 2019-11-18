@@ -64,13 +64,26 @@ describe("QuotesController", () => {
 
   describe("group", async () => {
     let fakeQuotes = [
-      { quote: "Fake", author: "Fake Author" },
-      { quote: "Fake 2", author: "Fake Author 2" }
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ],
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ],
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ],
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ]
     ];
 
     beforeEach(() => {
-      // Stub the output of Quotes to provide a specific
-      // and expected output
+      // Stub the output of Quotes to provide a specific quote grouping
       sinonSandbox.stub(Quotes, "getGroup").returns(fakeQuotes);
     });
 
@@ -80,7 +93,7 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(fakeQuotes);
+          expect(response.body.length).to.deep.equal(fakeQuotes.length);
         });
     });
   });

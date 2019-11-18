@@ -60,9 +60,9 @@ class Quotes {
    *
    * @returns {Array[Array<Quote>]}
    */
-  public static getGroup(): string[][] {
+  public static getGroup(): Quote[][] {
     let quoteIndex = 0;
-    const quoteGroupList: string[][] = [[], [], []];
+    const quoteGroupList: Quote[][] = [[], [], []];
     console.log("quote length =" + this.quotes.length);
     for (let i = 0; i < 3; i++) {
       const randomLen: number = 2 + Math.round(Math.random() * 2);
