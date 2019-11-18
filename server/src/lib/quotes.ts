@@ -60,10 +60,10 @@ class Quotes {
    *
    * @returns {Array[Array<Quote>]}
    */
-  public static getGroup(): Quote[][] {
+  public static getGroup(numberGroups: number): Quote[][] {
     let quoteIndex = 0;
     const quoteGroupList: Quote[][] = [[], [], []];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < numberGroups; i++) {
       const randomLen: number = 2 + Math.round(Math.random() * 2);
       quoteGroupList[i] = new Array(randomLen);
       for (let j = 0; j < randomLen; j++) {
