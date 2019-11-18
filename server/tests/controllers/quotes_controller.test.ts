@@ -93,7 +93,7 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body.length).to.deep.equal(fakeQuotes.length);
+          expect(response.body).to.deep.equal(fakeQuotes);
         });
     });
   });

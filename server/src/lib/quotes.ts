@@ -63,14 +63,11 @@ class Quotes {
   public static getGroup(): Quote[][] {
     let quoteIndex = 0;
     const quoteGroupList: Quote[][] = [[], [], []];
-    console.log("quote length =" + this.quotes.length);
     for (let i = 0; i < 3; i++) {
       const randomLen: number = 2 + Math.round(Math.random() * 2);
-      console.log("Random Length: " + randomLen);
       quoteGroupList[i] = new Array(randomLen);
       for (let j = 0; j < randomLen; j++) {
         quoteGroupList[i][j] = this.quotes[quoteIndex];
-        console.log("quote index =" + quoteIndex);
         if (this.quotes.length > quoteIndex + 1) {
           quoteIndex++;
         } else {

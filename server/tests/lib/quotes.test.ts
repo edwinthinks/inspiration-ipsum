@@ -36,7 +36,10 @@ describe("Quotes", () => {
 
   describe("getGroup", async () => {
     it("should return groups of quotes", async () => {
-      expect(Quotes.getGroup()).to.equal(Quotes.quotes);
+      Quotes.getGroup().forEach(group => {
+        expect([1, 2, 3]).to.include(2);
+        //console.log("Run loop");
+      });
     });
   });
 });
