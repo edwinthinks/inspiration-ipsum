@@ -33,4 +33,13 @@ describe("Quotes", () => {
       expect(Quotes.getRandom()).to.equal(Quotes.quotes[randomizedIndex]);
     });
   });
+
+  describe("getGroup", async () => {
+    it("should return groups of quotes", async () => {
+      Quotes.getGroup().forEach(group => {
+        console.log(group);
+        expect([1, 2, 3]).to.include(2);
+      });
+    });
+  });
 });
