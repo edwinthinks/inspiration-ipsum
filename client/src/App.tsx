@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Header from "./Header";
+import GeneratorForm from "./GeneratorForm";
 
 interface Quote {
   author: string;
@@ -24,6 +25,10 @@ const App: React.FC = () => {
     setRandomQuote(quoteJson);
   };
 
+  const onSubmit = (paragraphCount: string): void => {
+    console.log(paragraphCount);
+  };
+
   return (
     <div className="content">
       <div className="content-container">
@@ -34,32 +39,7 @@ const App: React.FC = () => {
         <div className="body-container">
           <div className="main-container">
             <div className="instruction-container">
-              <div className="w-form">
-                <h3 className="small-header bigger">Generate Your Ipsum</h3>
-                <form
-                  id="email-form"
-                  name="email-form"
-                  data-name="Email Form"
-                  className="form"
-                >
-                  <div className="field-group">
-                    <div className="field-container">
-                      <label htmlFor="paragraphs" className="field-label">
-                        Paragraphs
-                      </label>
-                      <input
-                        type="number"
-                        className="input-field w-input"
-                        maxLength={256}
-                        name="paragraphs"
-                        data-name="paragraphs"
-                        id="paragraphs"
-                        required
-                      />
-                    </div>
-                  </div>
-                </form>
-              </div>
+              <GeneratorForm onSubmit={onSubmit} />
             </div>
             <div className="quotes-container">
               <div className="quotes-header">
