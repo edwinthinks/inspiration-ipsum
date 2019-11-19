@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Background from "./inspiration-ipsum-bg.jpg";
 import "./App.css";
 
@@ -11,15 +11,15 @@ interface Quote {
 }
 
 const App: React.FC = () => {
-  useEffect(() => {
-    fetchRandomQuote();
-  }, []);
+  // useEffect(() => {
+  // fetchRandomQuote();
+  // }, []);
 
-  const fetchRandomQuote = async () => {
-    let quoteJson: Quote = await fetch("api/quotes/random").then(r => {
-      return r.json();
-    });
-  };
+  // const fetchRandomQuote = async () => {
+  // let quoteJson: Quote = await fetch("api/quotes/random").then(r => {
+  // return r.json();
+  // });
+  // };
 
   const onSubmit = (paragraphCount: string): void => {
     console.log(paragraphCount);
