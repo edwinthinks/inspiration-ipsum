@@ -17,6 +17,11 @@ class QuotesController {
     res.status(200);
     res.json(Quotes.getRandom());
   };
+
+  static group = (req: Request, res: Response): void => {
+    res.status(200);
+    res.json(Quotes.getGroup(Number(req.query.size)));
+  };
 }
 
 export default QuotesController;

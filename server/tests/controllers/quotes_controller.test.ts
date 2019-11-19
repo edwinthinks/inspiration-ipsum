@@ -61,4 +61,45 @@ describe("QuotesController", () => {
         });
     });
   });
+
+  describe("group", async () => {
+    let fakeQuotes = [
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ],
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ],
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ],
+      [
+        { quote: "Fake", author: "Fake Author" },
+        { quote: "Fake 2", author: "Fake Author 2" }
+      ]
+    ];
+
+    let numberOfArgs = 3;
+
+    beforeEach(() => {
+      // Stub the output of Quotes to provide a specific quote grouping
+      sinonSandbox
+        .stub(Quotes, "getGroup")
+        .withArgs(numberOfArgs)
+        .returns(fakeQuotes);
+    });
+
+    it("returns 200 and groups of quotes", async () => {
+      await request(server)
+        .get(`/api/quotes/group?size=${numberOfArgs}`)
+        .expect("Content-Type", /json/)
+        .expect(200)
+        .then(response => {
+          expect(response.body).to.deep.equal(fakeQuotes);
+        });
+    });
+  });
 });
