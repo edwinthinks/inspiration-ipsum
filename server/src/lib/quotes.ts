@@ -57,7 +57,7 @@ class Quotes {
 
   /**
    * Returns groupings of quotes by author
-   *
+   * @param {number} numberGroups - number of groups to be returned.
    * @returns {Array[Array<Quote>]}
    */
   public static getGroup(numberGroups: number): Quote[][] {

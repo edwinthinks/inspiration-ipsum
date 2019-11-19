@@ -92,7 +92,7 @@ describe("QuotesController", () => {
         .returns(fakeQuotes);
     });
 
-    it("returns 200 and a collection of quotes", async () => {
+    it("returns 200 and groups of quotes", async () => {
       await request(server)
         .get(`/api/quotes/group?size=${numberOfArgs}`)
         .expect("Content-Type", /json/)
