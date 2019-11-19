@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Background from "./inspiration-ipsum-bg.jpg";
-import logo from "./logo.svg";
 import "./App.css";
 
 import Header from "./Header";
@@ -12,8 +11,6 @@ interface Quote {
 }
 
 const App: React.FC = () => {
-  const [randomQuote, setRandomQuote] = useState<Quote | undefined>(undefined);
-
   useEffect(() => {
     fetchRandomQuote();
   }, []);
@@ -22,8 +19,6 @@ const App: React.FC = () => {
     let quoteJson: Quote = await fetch("api/quotes/random").then(r => {
       return r.json();
     });
-
-    setRandomQuote(quoteJson);
   };
 
   const onSubmit = (paragraphCount: string): void => {
