@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Background from "./inspiration-ipsum-bg.jpg";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -30,11 +31,11 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="content">
+    <div className="content" style={{ backgroundImage: `url(${Background})` }}>
       <div className="content-container">
         <Header
           title={"Inspiration Ipsum"}
-          subTitle={"The MOST MOVING&nbsp;text placeholder Generator"}
+          subTitle={"The MOST MOVING text placeholder Generator"}
         />
         <div className="body-container">
           <div className="main-container">
