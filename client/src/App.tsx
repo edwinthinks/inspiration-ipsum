@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+import Header from "./Header";
+
 interface Quote {
   author: string;
   quote: string;
@@ -23,26 +25,160 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1> Inspiration Ipsum </h1>
-        {randomQuote && (
-          <div>
-            <label>
-              <span role="img" aria-label="Finger pointing down">
-                👇
-              </span>{" "}
-              Fetched random quote data from express api{" "}
-              <span role="img" aria-label="Finger pointing down">
-                👇
-              </span>
-            </label>
-            <p>{randomQuote.quote}</p>
-            <p>{`- ${randomQuote.author}`}</p>
+    <div className="content">
+      <div className="content-container">
+        <Header
+          title={"Inspiration Ipsum"}
+          subTitle={"The MOST MOVING&nbsp;text placeholder Generator"}
+        />
+        <div className="body-container">
+          <div className="main-container">
+            <div className="instruction-container">
+              <div className="w-form">
+                <h3 className="small-header bigger">Generate Your Ipsum</h3>
+                <form
+                  id="email-form"
+                  name="email-form"
+                  data-name="Email Form"
+                  className="form"
+                >
+                  <div className="field-group">
+                    <div className="field-container">
+                      <label htmlFor="paragraphs" className="field-label">
+                        Paragraphs
+                      </label>
+                      <input
+                        type="number"
+                        className="input-field w-input"
+                        maxLength={256}
+                        name="paragraphs"
+                        data-name="paragraphs"
+                        id="paragraphs"
+                        required
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="quotes-container">
+              <div className="quotes-header">
+                <h3 className="small-header bigger">
+                  Your Inspirational Ipsum
+                </h3>
+                <div className="text-block info">
+                  **Hover over and click on text to see who said it
+                </div>
+              </div>
+              <div className="quotes-output">
+                <div className="quotes">
+                  <span className="quote">
+                    Be yourself; everyone else is already taken.{" "}
+                  </span>
+                  <span className="quote">
+                    Be the change that you wish to see in the world. Darkness
+                    cannot drive out darkness: only light can do that. Hate
+                    cannot drive out hate: only love can do that.{" "}
+                  </span>
+                  <span className="quote">
+                    Without music, life would be a mistake.{" "}
+                  </span>
+                  <span className="quote">
+                    There are only two ways to live your life. One is as though
+                    nothing is a miracle. The other is as though everything is a
+                    miracle.
+                  </span>
+                </div>
+                <div className="quotes">
+                  <span className="quote">
+                    Be yourself; everyone else is already taken.{" "}
+                  </span>
+                  <span className="quote">
+                    Be the change that you wish to see in the world. Darkness
+                    cannot drive out darkness: only light can do that. Hate
+                    cannot drive out hate: only love can do that.{" "}
+                  </span>
+                  <span className="quote">
+                    Without music, life would be a mistake.{" "}
+                  </span>
+                  <span className="quote">
+                    There are only two ways to live your life. One is as though
+                    nothing is a miracle. The other is as though everything is a
+                    miracle.
+                  </span>
+                </div>
+                <div className="quotes">
+                  <span className="quote">
+                    Be yourself; everyone else is already taken.{" "}
+                  </span>
+                  <span className="quote">
+                    Be the change that you wish to see in the world. Darkness
+                    cannot drive out darkness: only light can do that. Hate
+                    cannot drive out hate: only love can do that.{" "}
+                  </span>
+                  <span className="quote">
+                    Without music, life would be a mistake.{" "}
+                  </span>
+                  <span className="quote">
+                    There are only two ways to live your life. One is as though
+                    nothing is a miracle. The other is as though everything is a
+                    miracle.
+                  </span>
+                </div>
+                <div className="quotes">
+                  <span className="quote">
+                    Be yourself; everyone else is already taken.{" "}
+                  </span>
+                  <span className="quote">
+                    Be the change that you wish to see in the world. Darkness
+                    cannot drive out darkness: only light can do that. Hate
+                    cannot drive out hate: only love can do that.{" "}
+                  </span>
+                  <span className="quote">
+                    Without music, life would be a mistake.{" "}
+                  </span>
+                  <span className="quote">
+                    There are only two ways to live your life. One is as though
+                    nothing is a miracle. The other is as though everything is a
+                    miracle.
+                  </span>
+                </div>
+                <div className="quotes">
+                  <span className="quote">
+                    There is no greater agony than bearing an untold story
+                    inside you. To the well-organized mind, death is but the
+                    next great adventure.
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-      </header>
+          <div className="information-container">
+            <h3 className="small-header bigger">Information</h3>
+            <div className="text-block">
+              <strong>
+                Generate a lorem ipsum with a inspiration twist! This
+                application generates paragraphs using inspiration quotes
+                sourced from{" "}
+              </strong>
+              <a href="https://www.goodreads.com/quotes/tag/inspirational">
+                <strong className="link">goodreads.com</strong>
+              </a>
+              <strong>
+                <br />
+              </strong>
+              <br />
+              Source can be found{" "}
+              <a
+                href="https://github.com/edwinthinks/inspiration-ipsum"
+                className="link"
+              >
+                here
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
