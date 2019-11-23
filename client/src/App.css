@@ -316,6 +316,7 @@
   background-color: #ffd000;
   color: #000;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .field-group {
