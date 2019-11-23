@@ -1,33 +1,27 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 import App from "./App";
 
 test("renders random quote text and the title", async () => {
-  let fakeQuote = {
-    author: "Fake Author",
-    quote: "Fake Quote"
+  let quote = {
+    author: "Steve Jobs",
+    quote:
+      "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it"
   };
 
-  jest.spyOn(window, "fetch").mockImplementationOnce(() => {
-    return Promise.resolve({
-      json: () => {
-        return fakeQuote;
-      }
-    });
-  });
+  const { queryByText } = render(<App />);
 
-  const { findByText } = render(<App />);
+  let quoteElement = queryByText(quote.quote);
+  expect(quoteElement).not.toBeNull();
 
-  // Check Title
-  await findByText("Inspiration Ipsum");
+  expect(queryByText(quote.author)).toBeNull();
 
-  // These will throw an error if they cannot find
-  // the matching text.
-  //
-  // Note - if it is going to fail it wil take
-  // a few seconds to realize it. Perhaps could
-  // add a timeout setting.
-  // await findByText(fakeQuote.quote);
-  // await findByText(`- ${fakeQuote.author}`);
+  fireEvent.mouseEnter(quoteElement);
+
+  expect(queryByText(quote.author)).not.toBeNull();
+
+  fireEvent.mouseLeave(quoteElement);
+
+  expect(queryByText(quote.author)).toBeNull();
 });
