@@ -72,6 +72,12 @@
   text-transform: uppercase;
 }
 
+.small-header.author {
+  display: inline;
+  margin-right: 0px;
+  text-shadow: 4px 4px 4px #b9962c;
+}
+
 .content-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -307,8 +313,6 @@
 }
 
 .button {
-  padding: 10px;
-  margin-bottom: 20px;
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
@@ -383,15 +387,15 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
@@ -421,6 +425,13 @@
 .quotes-output {
   overflow: scroll;
   height: 360px;
+}
+
+.who-said-it {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
 }
 
 @media (max-width: 991px) {
@@ -453,6 +464,13 @@
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     align-items: flex-end;
+  }
+  .quotes-header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -504,6 +522,9 @@
     -ms-flex-direction: column;
     flex-direction: column;
   }
+  .quotes-output {
+    height: 330px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -518,6 +539,9 @@
   }
   .small-header.bigger {
     font-size: 18px;
+  }
+  .small-header.author {
+    font-size: 20px;
   }
   .content-container {
     overflow: scroll;
@@ -564,7 +588,7 @@
     align-self: auto;
   }
   .quotes-output {
-    height: 340px;
+    height: 310px;
   }
 }
 
