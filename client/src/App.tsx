@@ -69,7 +69,7 @@ const App: React.FC = () => {
                 {quoteAuthor && (
                   <div className="who-said-it">
                     <h3 className="small-header author">
-                      <span role="img" className="emoji">
+                      <span role="img" className="emoji" aria-label='microphone'>
                         🎤
                       </span>
                       {quoteAuthor}
