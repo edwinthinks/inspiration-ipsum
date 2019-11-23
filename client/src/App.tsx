@@ -12,11 +12,11 @@ interface QuoteData {
 }
 
 const App: React.FC = () => {
-  const [quotes, setQuotes] = useState([
+  const [quotes] = useState([
     {
       author: "Steve Jobs",
       quote:
-        "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it"
+        "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it."
     },
     {
       author: "Walt Disney",
@@ -58,13 +58,22 @@ const App: React.FC = () => {
             </div>
             <div className="quotes-container">
               <div className="quotes-header">
-                <h3 className="small-header bigger">
-                  Your Inspirational Ipsum
-                </h3>
-                <div className="text-block info">
-                  **Hover over and click on text to see who said it
+                <div className="quotes-title">
+                  <h3 className="small-header bigger">
+                    Your Inspirational Ipsum
+                  </h3>
+                  <div className="text-block info">
+                    **Hover over and click on text to see who said it
+                  </div>
                 </div>
-                <div>{quoteAuthor}</div>
+                {quoteAuthor && (
+                  <div className="who-said-it">
+                    <h3 className="small-header author">
+                      <span className="emoji">🎤</span>
+                      {quoteAuthor}
+                    </h3>
+                  </div>
+                )}
               </div>
               <div className="quotes-output">
                 <div className="quotes">
@@ -79,22 +88,6 @@ const App: React.FC = () => {
                       />
                     );
                   })}
-                  <span className="quote">
-                    Be yourself; everyone else is already taken.{" "}
-                  </span>
-                  <span className="quote">
-                    Be the change that you wish to see in the world. Darkness
-                    cannot drive out darkness: only light can do that. Hate
-                    cannot drive out hate: only love can do that.{" "}
-                  </span>
-                  <span className="quote">
-                    Without music, life would be a mistake.{" "}
-                  </span>
-                  <span className="quote">
-                    There are only two ways to live your life. One is as though
-                    nothing is a miracle. The other is as though everything is a
-                    miracle.
-                  </span>
                 </div>
                 <div className="quotes">
                   <span className="quote">
