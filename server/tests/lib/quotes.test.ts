@@ -13,13 +13,13 @@ describe("Quotes", () => {
     sinonSandbox.restore();
   });
 
-  describe("getAll", async () => {
+  describe("getAll", () => {
     it("should return all quotes", async () => {
       expect(Quotes.getAll()).to.equal(Quotes.quotes);
     });
   });
 
-  describe("getRandom", async () => {
+  describe("getRandom", () => {
     // Fix the result of randomization and make sure
     // the results match
     let randomizedIndex: number = 1;
@@ -34,7 +34,7 @@ describe("Quotes", () => {
     });
   });
 
-  describe("getGroup", async () => {
+  describe("getGroup", () => {
     it("should return groups of at least 1 quote", async () => {
       Quotes.getGroup(4).forEach(group => {
         group.forEach(quote => {

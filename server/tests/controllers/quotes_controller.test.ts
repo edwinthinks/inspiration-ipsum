@@ -20,7 +20,7 @@ describe("QuotesController", () => {
     server.close();
   });
 
-  describe("index", async () => {
+  describe("index", () => {
     let fakeQuotes = [
       { quote: "Fake", author: "Fake Author" },
       { quote: "Fake 2", author: "Fake Author 2" }
@@ -43,7 +43,7 @@ describe("QuotesController", () => {
     });
   });
 
-  describe("random", async () => {
+  describe("random", () => {
     let randomFakeQuote = { quote: "Fake", author: "Fake Author" };
 
     beforeEach(() => {
@@ -62,7 +62,7 @@ describe("QuotesController", () => {
     });
   });
 
-  describe("group", async () => {
+  describe("group", () => {
     let fakeQuotes = [
       [
         { quote: "Fake", author: "Fake Author" },
