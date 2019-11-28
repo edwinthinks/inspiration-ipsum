@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import sinon, { SinonSandbox } from "sinon";
 import request from "supertest";
 
@@ -20,7 +19,7 @@ describe("QuotesController", () => {
     server.close();
   });
 
-  describe("index", async () => {
+  describe("index", () => {
     let fakeQuotes = [
       { quote: "Fake", author: "Fake Author" },
       { quote: "Fake 2", author: "Fake Author 2" }
@@ -38,12 +37,12 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(fakeQuotes);
+          expect(response.body).toStrictEqual(fakeQuotes);
         });
     });
   });
 
-  describe("random", async () => {
+  describe("random", () => {
     let randomFakeQuote = { quote: "Fake", author: "Fake Author" };
 
     beforeEach(() => {
@@ -57,12 +56,12 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(randomFakeQuote);
+          expect(response.body).toStrictEqual(randomFakeQuote);
         });
     });
   });
 
-  describe("group", async () => {
+  describe("group", () => {
     let fakeQuotes = [
       [
         { quote: "Fake", author: "Fake Author" },
@@ -98,7 +97,7 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(fakeQuotes);
+          expect(response.body).toStrictEqual(fakeQuotes);
         });
     });
   });
