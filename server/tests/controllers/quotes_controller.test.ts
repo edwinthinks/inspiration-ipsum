@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import sinon, { SinonSandbox } from "sinon";
 import request from "supertest";
 
@@ -38,7 +37,7 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(fakeQuotes);
+          expect(response.body).toStrictEqual(fakeQuotes);
         });
     });
   });
@@ -57,7 +56,7 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(randomFakeQuote);
+          expect(response.body).toStrictEqual(randomFakeQuote);
         });
     });
   });
@@ -98,7 +97,7 @@ describe("QuotesController", () => {
         .expect("Content-Type", /json/)
         .expect(200)
         .then(response => {
-          expect(response.body).to.deep.equal(fakeQuotes);
+          expect(response.body).toStrictEqual(fakeQuotes);
         });
     });
   });

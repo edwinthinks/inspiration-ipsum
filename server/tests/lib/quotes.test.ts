@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import sinon, { SinonSandbox } from "sinon";
 import Quotes from "../../src/lib/quotes";
 
@@ -15,7 +14,7 @@ describe("Quotes", () => {
 
   describe("getAll", () => {
     it("should return all quotes", async () => {
-      expect(Quotes.getAll()).to.equal(Quotes.quotes);
+      expect(Quotes.getAll()).toStrictEqual(Quotes.quotes);
     });
   });
 
@@ -30,7 +29,7 @@ describe("Quotes", () => {
     });
 
     it("should return a single randomized quote", async () => {
-      expect(Quotes.getRandom()).to.equal(Quotes.quotes[randomizedIndex]);
+      expect(Quotes.getRandom()).toBe(Quotes.quotes[randomizedIndex]);
     });
   });
 
@@ -38,13 +37,13 @@ describe("Quotes", () => {
     it("should return groups of at least 1 quote", async () => {
       Quotes.getGroup(4).forEach(group => {
         group.forEach(quote => {
-          expect(Quotes.quotes).to.include(quote);
+          expect(Quotes.quotes).toContain(quote);
         });
       });
     });
     it("should return same number of groups of quotes as the parameter provided", async () => {
       let groups: number = 4;
-      expect(Quotes.getGroup(groups).length).to.equal(groups);
+      expect(Quotes.getGroup(groups).length).toBe(groups);
     });
   });
 });
