@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "develop": "ts-node-dev --respawn --transpileOnly ./src/run.ts",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "lint": "./node_modules/.bin/eslint ./src/**/*.ts --fix",
     "format": "prettier --write '**/*.{ts,json,md}'"
