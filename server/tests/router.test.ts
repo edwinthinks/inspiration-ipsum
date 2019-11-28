@@ -33,7 +33,6 @@ describe("Router", () => {
       await request(server)
         .get("/unknown-path")
         .expect("Content-Type", /html/)
-        .expect(200);
     });
   });
 });
